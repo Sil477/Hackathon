@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Avisos con IA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF; /* Color azul */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+        button:hover {
+            background-color: #0056b3; /* Color azul más oscuro */
+        }
+        input[type="file"] {
+            margin: 10px 0;
+        }
+        #preview {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="login-section">
+    <h2>Iniciar Sesión</h2>
+    <label for="username">Usuario:</label><br>
+    <input type="text" id="username" placeholder="Ingresa tu usuario"><br><br>
+    <label for="password">Contraseña:</label><br>
+    <input type="password" id="password" placeholder="Ingresa tu contraseña"><br><br>
+    <button onclick="showGenerateSection()">Login</button>
+</div>
+
+<div class="container hidden" id="generate-section">
+    <h2>Generar Aviso con IA</h2>
+    <button onclick="startGenerate()">Generar Aviso con IA</button><br><br>
+
+    <div id="upload-section" class="hidden">
+        <label for="file-upload">Adjunta un documento:</label><br>
+        <input type="file" id="file-upload"><br><br>
+        <button onclick="generateAviso()">Generar Aviso</button>
+    </div>
+
+    <div id="aviso-section" class="hidden">
+        <h3>Texto del Aviso:</h3>
+        <div id="preview"></div>
+        <button onclick="publishAviso()">Publicar</button>
+        <button onclick="modifyAviso()">Modificar</button>
+    </div>
+</div>
+
+<script>
+    function showGenerateSection() {
+        document.getElementById('login-section').classList.add('hidden');
+        document.getElementById('generate-section').classList.remove('hidden');
+    }
+
+    function startGenerate() {
+        document.getElementById('upload-section').classList.remove('hidden');
+    }
+
+    function generateAviso() {
+        const fileUpload = document.getElementById('file-upload').value;
+
+        if (fileUpload === '') {
+            alert("Por favor, adjunta un documento antes de generar el aviso.");
+        } else {
+            const avisoText = 
+                "Estimado Empleador,\n\nGracias por adjuntar el documento. " +
+                "Este es un aviso generado automáticamente utilizando IA para su revisión. " +
+                "Por favor, revisa el contenido del documento adjunto para más detalles.\n\n" +
+                "Atentamente,\nSistema de Generación de Avisos con IA";
+            
+            document.getElementById('aviso-section').classList.remove('hidden');
+            document.getElementById('preview').innerText = avisoText;
+        }
+    }
+
+    function publishAviso() {
+        alert("El aviso ha sido publicado exitosamente.");
+        // Aquí puedes agregar la lógica para publicar el aviso
+    }
+
+    function modifyAviso() {
+        alert("Puedes modificar el aviso.");
+        // Aquí puedes agregar la lógica para modificar el aviso
+    }
+</script>
+
+</body>
+</html>
