@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear CV</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .section {
+            width: 80%; /* Ocupa el 80% del ancho */
+            margin: 20px auto; /* Centrado horizontal y margen vertical */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            padding: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .section img {
+            width: 100%; /* Imagen ocupa todo el ancho de la sección */
+            height: auto;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #cvImage {
+            display: none; /* Inicialmente oculto */
+            margin-top: 20px;
+            width: 80%; /* Ancho del 80% para la imagen del CV */
+            height: auto; /* Altura automática */
+        }
+    </style>
+</head>
+<body>
+    <h1>Crear CV</h1>
+    
+    <div class="section">
+        <img src="./contacto.png" alt="Icono de Contacto">
+    </div>
+    
+    <div class="section">
+        <img src="./formacion.png" alt="Icono de Formación Profesional">
+    </div>
+    
+    <div class="section">
+        <img src="./cursos.png" alt="Icono de Cursos">
+    </div>
+    
+    <button id="generateCVButton">Aceptar</button>
+    
+    <img id="cvImage" src="./cvG.png" alt="Imagen del CV">
+
+    <script>
+        document.getElementById('generateCVButton').addEventListener('click', function() {
+            // Eliminar todas las secciones
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.style.display = 'none'); // Oculta las secciones
+
+            // Mostrar la imagen del CV
+            const cvImage = document.getElementById('cvImage');
+            cvImage.style.display = 'block'; // Muestra la imagen del CV
+
+            alert("CV generado con éxito.");
+        });
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Plataforma de Empleo</title>
+</head>
+<body>
+    <header>
+        <h1>Plataforma de Empleo Inclusiva</h1>
+    </header>
+
+    <main>
+        <div class="button" id="inicio"onclick="redirectTohome()">Inicio</div>
+        <div class="button" id="registro"onclick="redirectToregistrou()">Registro/Iniciar Sesión</div>
+        <div class="button" id="buscar" onclick="redirectTobuscart()">Buscar</div>
+        <div class="button" id="crear-cv" onclick="openCVModal()">Crear/Actualizar CV</div>
+        <div class="button" id="Empeladores"onclick="redirectTobuscare()">Empleadores</div>
+    </main>
+
+    <div id="cv-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCVModal()">&times;</span>
+            <h2>Selecciona cómo quieres crear tu CV</h2>
+            <div class="button" id="cv-tradicional"onclick="redirectTocvtradicional()">Crear CV Tradicional</div>
+            <div class="button" id="cv-asistente" onclick="redirectToAsistente()">Crear CV con Asistente Virtual</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Plataforma de Empleo Inclusiva</p>
+    </footer>
+
+    <script>
+        function openCVModal() {
+            document.getElementById('cv-modal').style.display = 'block';
+        }
+
+        function closeCVModal() {
+            document.getElementById('cv-modal').style.display = 'none';
+        }
+
+        // Cerrar modal si se hace clic fuera de él
+        window.onclick = function(event) {
+            const modal = document.getElementById('cv-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Redirigir al asistente virtual
+        function redirectToAsistente() {
+            window.location.href = 'asistente_virtual.html'; // Cambia el nombre si tu archivo tiene otro nombre
+        }
+        // Redirigir al busqueda laboral
+        function redirectTobusquedaia() {
+            window.location.href = 'busquedaia.html'; // Cambia el nombre si tu archivo tiene otro nombre
+        }
+         // Redirigir al cv tradicional
+         function redirectTocvtradicional() {
+            window.location.href = 'cv_tradicional.html'; // Cambia el nombre si tu archivo tiene otro nombre
+        }
+        // Redirigir registro de usuario
+        function redirectToregistrou() {
+            window.location.href = 'registrol.html'; // Cambia el nombre si tu archivo tiene otro nombre
+        }
+        // Redirigir home
+        function redirectTohome() {
+            window.location.href = 'home.html'; // Cambia el nombre si tu archivo tiene otro nombre
+        }
+         // Redirigir empleadores
+         function redirectTobuscare() {
+            window.location.href = 'buscare.html'; // Cambia el nombre si tu archivo tiene otro nombre
+        }
+        // Redirigir Buscar todos 
+        function redirectTobuscart() {
+            window.location.href = 'buscart.html'; // Cambia el nombre si tu archivo tiene otro nombre
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar CV</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        let cv = {};  // Objeto para almacenar las respuestas del usuario
+
+        function loadCV() {
+            cv.name = "Juan Pérez";  // Aquí iría el CV cargado previamente
+            cv.experience = "5 años en Desarrollo Web";
+            cv.skills = "HTML, CSS, JavaScript";
+            document.getElementById("cvPreview").innerText = `Nombre: ${cv.name}\nExperiencia: ${cv.experience}\nHabilidades: ${cv.skills}`;
+        }
+
+        function modifyField() {
+            let fieldToModify = document.getElementById("modifyInput").value;
+            if (fieldToModify) {
+                cv.skills = fieldToModify;  // En este ejemplo, solo modifico "skills"
+                document.getElementById("cvPreview").innerText = `Nombre: ${cv.name}\nExperiencia: ${cv.experience}\nHabilidades: ${cv.skills}`;
+            }
+        }
+
+        function saveModifications() {
+            alert("CV modificado guardado.");
+            window.location.href = 'crear_cv_asistente.html';
+        }
+    </script>
+</head>
+<body onload="loadCV()">
+    <h1>Modificar CV</h1>
+
+    <h2>Vista Previa del CV</h2>
+    <pre id="cvPreview"></pre>
+
+    <h3>¿Qué deseas modificar?</h3>
+    <input type="text" id="modifyInput" placeholder="Escribe lo que quieres modificar">
+    <button onclick="modifyField()">Guardar Cambios</button>
+
+    <button onclick="saveModifications()">Aceptar Modificaciones</button>
+</body>
+</html>

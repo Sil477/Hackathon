@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doy Empleo - Perfiles Profesionales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+
+        button[type="submit"] {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .filter-icon {
+            font-size: 24px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .profile-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            text-align: left;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .profile-card img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            float: left;
+            margin-right: 20px;
+        }
+
+        .profile-card h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .profile-card p {
+            margin: 5px 0 10px;
+            color: #666;
+        }
+
+        .profile-card button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+        }
+
+        .profile-card button:hover {
+            background-color: #218838;
+        }
+
+        .stars {
+            color: gold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Doy Empleo - Encuentra Profesionales</h1>
+    
+    <!-- Barra de búsqueda -->
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Busca un profesional o un oficio..." aria-label="Buscar perfiles">
+        <button type="submit" onclick="searchProfiles()">Buscar</button>
+    </div>
+
+    <!-- Filtros de accesibilidad -->
+    <div class="filters">
+        <div class="filter-icon" title="Filtro de discapacidad">♿</div>
+        <div class="filter-icon" title="Filtro de comando de voz">🔊</div>
+    </div>
+
+    <!-- Tarjetas de perfiles -->
+    <div id="profilesContainer">
+        <!-- Ejemplo de tarjeta de perfil -->
+        <div class="profile-card">
+            <img src="https://via.placeholder.com/80" alt="Foto de perfil">
+            <h2>Juan Pérez</h2>
+            <p>Desarrollador Full Stack con 5 años de experiencia en JavaScript, Python y React.</p>
+            <div class="stars">★★★★★</div>
+            <button>Contactar</button>
+        </div>
+
+        <div class="profile-card">
+            <img src="https://via.placeholder.com/80" alt="Foto de perfil">
+            <h2>María González</h2>
+            <p>Diseñadora gráfica experta en branding y creación de logotipos profesionales.</p>
+            <div class="stars">★★★★☆</div>
+            <button>Contactar</button>
+        </div>
+
+        <div class="profile-card">
+            <img src="https://via.placeholder.com/80" alt="Foto de perfil">
+            <h2>Pedro Rodríguez</h2>
+            <p>Electricista con más de 10 años de experiencia en instalaciones residenciales y comerciales.</p>
+            <div class="stars">★★★☆☆</div>
+            <button>Contactar</button>
+        </div>
+
+        <div class="profile-card">
+            <img src="https://via.placeholder.com/80" alt="Foto de perfil">
+            <h2>Lucía Méndez</h2>
+            <p>Contadora pública especializada en finanzas empresariales y auditorías.</p>
+            <div class="stars">★★★★★</div>
+            <button>Contactar</button>
+        </div>
+    </div>
+
+    <script>
+        function searchProfiles() {
+            const searchQuery = document.getElementById('searchBar').value.toLowerCase();
+            const profileCards = document.querySelectorAll('.profile-card');
+
+            profileCards.forEach(card => {
+                const profileName = card.querySelector('h2').innerText.toLowerCase();
+                const profileDescription = card.querySelector('p').innerText.toLowerCase();
+
+                if (profileName.includes(searchQuery) || profileDescription.includes(searchQuery)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
+
+
+

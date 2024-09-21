@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background-image: url('tu-imagen-de-fondo.jpg'); /* Cambia esto por la ruta de tu imagen */
+            background-size: cover;
+        }
+
+        .login-container {
+            margin: 20px auto;
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 80%;
+            max-width: 400px;
+            text-align: left;
+        }
+
+        #jobRecommendations {
+            display: none; /* Oculto por defecto */
+            margin-top: 20px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px; /* Aumentar tamaño de fuente */
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .search-container {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-input {
+            padding: 12px; /* Aumentar padding */
+            width: 60%;
+            margin-right: 10px;
+        }
+
+        .search-button, .accessibility-button, .voice-button {
+            padding: 12px; /* Aumentar padding */
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
+            font-size: 20px; /* Aumentar tamaño de fuente */
+        }
+
+        .search-button:hover, .accessibility-button:hover, .voice-button:hover {
+            background-color: #0056b3;
+        }
+
+        .icon {
+            width: 30px; /* Aumentar tamaño del icono */
+            height: 30px;
+            vertical-align: middle;
+        }
+
+        .icon-label {
+            display: block;
+            margin-top: 5px;
+            font-size: 14px; /* Tamaño de fuente del texto */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Iniciar Sesión</h1>
+        <input type="text" id="username" placeholder="Usuario" required style="width: 100%; margin-bottom: 10px; padding: 8px;">
+        <input type="password" id="password" placeholder="Contraseña" required style="width: 100%; margin-bottom: 10px; padding: 8px;">
+        <button id="loginButton">Iniciar Sesión</button>
+    </div>
+
+    <div id="welcomeMessage" style="display:none;">
+        <h2>Bienvenido, <span id="userNameDisplay"></span>!</h2>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Buscar trabajos..." aria-label="Buscar trabajos">
+            <button class="search-button" onclick="performSearch()">🔍</button>
+            <button class="accessibility-button" title="Opciones de accesibilidad">
+                <img src="./disca.png" class="icon" alt="Accesibilidad">
+            </button>
+            <button class="voice-button" title="Comando de voz" onclick="startVoiceRecognition()">
+                <img src="./1231027.png" class="icon" alt="Comando de voz">
+            </button>
+        </div>
+        <span class="icon-label">Buscar trabajo</span>
+        <h3>De acuerdo a tu perfil, te recomendamos estas búsquedas activas:</h3>
+        <div id="jobRecommendations"></div>
+    </div>
+
+    <script>
+        document.getElementById('loginButton').addEventListener('click', function() {
+            const username = document.getElementById('username').value;
+            if (username) {
+                // Simular la carga del perfil y las recomendaciones
+                document.getElementById('welcomeMessage').style.display = 'block';
+                document.getElementById('userNameDisplay').innerText = username;
+                displayJobRecommendations();
+            }
+        });
+
+        function displayJobRecommendations() {
+            const jobRecommendations = [
+                { title: "Desarrollador Web", description: "Buscamos un desarrollador web con experiencia en HTML, CSS y JavaScript." },
+                { title: "Diseñador Gráfico", description: "Se necesita diseñador gráfico para proyecto creativo." },
+                { title: "Analista de Datos", description: "Requerimos analista de datos para manejo de informes." }
+            ];
+
+            const recommendationsContainer = document.getElementById('jobRecommendations');
+            recommendationsContainer.innerHTML = ''; // Limpiar contenido anterior
+
+            jobRecommendations.forEach(job => {
+                const jobCard = document.createElement('div');
+                jobCard.className = 'job-card';
+                jobCard.innerHTML = `
+                    <strong>${job.title}</strong>
+                    <p>${job.description}</p>
+                    <button class="applyButton">Postúlate</button>
+                `;
+                recommendationsContainer.appendChild(jobCard);
+            });
+
+            recommendationsContainer.style.display = 'block'; // Mostrar las recomendaciones
+        }
+
+        function performSearch() {
+            const query = document.getElementById('searchInput').value;
+            alert(`Buscando trabajos relacionados con: ${query}`);
+            // Aquí puedes implementar la lógica para filtrar los trabajos recomendados
+        }
+
+        function startVoiceRecognition() {
+            alert('Iniciando reconocimiento de voz...');
+            // Aquí puedes implementar la lógica para el reconocimiento de voz
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente Virtual - Crear CV</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        let cv = {};  // Objeto para almacenar las respuestas del usuario
+
+        function askQuestions() {
+            cv.name = prompt("¿Cuál es tu nombre?");
+            cv.experience = prompt("¿Cuál es tu experiencia laboral?");
+            cv.skills = prompt("¿Cuáles son tus habilidades principales?");
+            generateCV();  // Una vez respondido todo, generar el CV
+        }
+
+        function generateCV() {
+            // Generar el CV como un string
+            let generatedCV = `Nombre: ${cv.name}\nExperiencia: ${cv.experience}\nHabilidades: ${cv.skills}`;
+            document.getElementById("cvPreview").innerText = generatedCV;
+            document.getElementById("cvContainer").style.display = "block";
+        }
+
+        function modifyCV() {
+            window.location.href = 'modificar_cv.html';
+        }
+    </script>
+</head>
+<body onload="askQuestions()">
+    <h1>Asistente Virtual</h1>
+
+    <div id="cvContainer" style="display: none;">
+        <h2>Tu CV Generado</h2>
+        <pre id="cvPreview"></pre>
+
+        <button onclick="modifyCV()">Modificar</button>
+        <button onclick="alert('CV Aceptado')">Aceptar</button>
+    </div>
+</body>
+</html>

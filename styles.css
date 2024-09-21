@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.button {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 300px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo específico para el textarea con fondo blanco */
+.textarea-white {
+    background-color: white; /* Fondo blanco */
+    color: black; /* Color del texto negro */
+    padding: 10px; /* Relleno interior */
+    border: 2px solid #007BFF; /* Borde azul similar al botón */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño del texto */
+    width: 300px; /* Mismo ancho que el botón */
+    margin: 10px 0; /* Margen similar */
+}
+
+/* Contenedor para la caja de texto y los íconos */
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 350px; /* Espacio total para textarea e íconos */
+}
+
+.icons-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px; /* Espacio entre la caja de texto y los íconos */
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+/* Modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijo */
+    z-index: 1; /* Enfrente */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    overflow: auto; /* Scroll si es necesario */
+    background-color: rgb(0,0,0); /* Color de fondo */
+    background-color: rgba(0,0,0,0.4); /* Fondo con opacidad */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Margen superior */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ancho */
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #f1f1f1; /* Opcional: para darle un fondo */
+    padding: 10px 0;
+}
+
+p {
+    margin: 0;
+    color: #333; /* Color del texto */
+    font-size: 14px;
+}

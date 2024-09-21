@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Empleo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .tab:hover {
+            background-color: #0056b3;
+        }
+
+        .active-tab {
+            background-color: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .login-form, .search-section, .profiles-section, .jobs-section {
+            margin-top: 20px;
+        }
+
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 80%;
+            max-width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .search-container {
+            margin: 20px auto;
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            justify-content: center;
+        }
+
+        input[type="search"] {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px 0 0 5px;
+            border: 1px solid #ccc;
+        }
+
+        .search-container button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .filter-icon {
+            font-size: 24px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .profile-card, .job-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            text-align: left;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .profile-card img, .job-card img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            float: left;
+            margin-right: 20px;
+        }
+
+        .stars {
+            color: gold;
+            font-size: 20px;
+        }
+
+        .job-card button, .profile-card button {
+            float: right;
+            background-color: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Panel Búsqueda</h1>
+    
+    <!-- Tabs -->
+    <div class="tabs">
+        <div class="tab active-tab" id="tab-empleo" onclick="showTab('empleo')">Busco Empleo</div>
+        <div class="tab" id="tab-empleado" onclick="showTab('empleado')">Busco Empleado</div>
+    </div>
+
+    <!-- Login Form -->
+    <div id="login-section" class="login-form">
+        <h2>Iniciar Sesión</h2>
+        <input type="text" id="username" placeholder="Usuario"><br>
+        <input type="password" id="password" placeholder="Contraseña"><br>
+        <button onclick="login()">Iniciar Sesión</button>
+    </div>
+
+    <!-- Search Section -->
+    <div id="search-section" class="search-section hidden">
+        <h2 id="welcome-message"></h2>
+        <div class="search-container">
+            <input type="search" id="searchBar" placeholder="Ingresa términos de búsqueda...">
+            <button onclick="search()">Buscar</button>
+        </div>
+
+        <div class="filters">
+            <div class="filter-icon" title="Filtro de discapacidad">♿</div>
+            <div class="filter-icon" title="Filtro de comando de voz">🔊</div>
+        </div>
+    </div>
+
+    <!-- Job Postings Section -->
+    <div id="jobs-section" class="jobs-section hidden">
+        <div class="job-card">
+            <img src="https://via.placeholder.com/80" alt="Icono de trabajo">
+            <h2>Desarrollador Full Stack</h2>
+            <p>Empresa de tecnología busca desarrollador con experiencia en JavaScript y Python.</p>
+            <button>Postularme</button>
+        </div>
+
+        <div class="job-card">
+            <img src="https://via.placeholder.com/80" alt="Icono de trabajo">
+            <h2>Diseñador Gráfico</h2>
+            <p>Se requiere diseñador para crear campañas publicitarias en redes sociales.</p>
+            <button>Postularme</button>
+        </div>
+    </div>
+
+    <!-- Profiles Section -->
+    <div id="profiles-section" class="profiles-section hidden">
+        <div class="profile-card">
+            <img src="https://via.placeholder.com/80" alt="Foto de perfil">
+            <h2>Juan Pérez</h2>
+            <p>Desarrollador Full Stack con experiencia en JavaScript y React.</p>
+            <div class="stars">★★★★★</div>
+            <button>Contactar</button>
+        </div>
+
+        <div class="profile-card">
+            <img src="https://via.placeholder.com/80" alt="Foto de perfil">
+            <h2>María González</h2>
+            <p>Diseñadora Gráfica especializada en branding y logos.</p>
+            <div class="stars">★★★★☆</div>
+            <button>Contactar</button>
+        </div>
+    </div>
+
+    <script>
+        let currentTab = 'empleo';
+
+        function showTab(tab) {
+            document.getElementById('tab-empleo').classList.remove('active-tab');
+            document.getElementById('tab-empleado').classList.remove('active-tab');
+            document.getElementById(`tab-${tab}`).classList.add('active-tab');
+            currentTab = tab;
+
+            // Mostrar la sección de login
+            document.getElementById('login-section').classList.remove('hidden');
+            document.getElementById('search-section').classList.add('hidden');
+            document.getElementById('jobs-section').classList.add('hidden');
+            document.getElementById('profiles-section').classList.add('hidden');
+        }
+
+        function login() {
+            const username = document.getElementById('username').value;
+            if (username) {
+                document.getElementById('welcome-message').textContent = `Bienvenido, ${username}`;
+                document.getElementById('login-section').classList.add('hidden');
+                document.getElementById('search-section').classList.remove('hidden');
+
+                if (currentTab === 'empleo') {
+                    document.getElementById('jobs-section').classList.remove('hidden');
+                } else {
+                    document.getElementById('profiles-section').classList.remove('hidden');
+                }
+            } else {
+                alert('Por favor ingrese un nombre de usuario.');
+            }
+        }
+
+        function search() {
+            alert('Realizando búsqueda...');
+            // Aquí se puede agregar la lógica de búsqueda real
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacitaciones y Cursos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            padding: 20px;
+            width: 300px;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            border-radius: 10px;
+            width: 100%;
+            height: auto;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .card p {
+            color: #666;
+            margin: 10px 0;
+            flex-grow: 1;
+        }
+
+        .info-button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .info-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Capacitaciones y Cursos Disponibles</h1>
+
+    <div class="card-container">
+        <div class="card">
+            <img src="./curso1.webp" alt="Curso de Programación Web">
+            <h2>Curso de Programación Web</h2>
+            <p>Aprende a crear sitios web desde cero utilizando HTML, CSS y JavaScript.</p>
+            <a href="#" class="info-button">Más Información</a>
+        </div>
+
+        <div class="card">
+            <img src="./curso2.jpg" alt="Curso de Diseño Gráfico">
+            <h2>Diseño Gráfico</h2>
+            <p>Conviértete en un experto en branding y diseño digital.</p>
+            <a href="#" class="info-button">Más Información</a>
+        </div>
+
+        <div class="card">
+            <img src="./reposteria.jpg" alt="Curso de Resptería">
+            <h2>Marketing Digital</h2>
+            <p>Domina las herramientas digitales para potenciar tu negocio.</p>
+            <a href="#" class="info-button">Más Información</a>
+        </div>
+    </div>
+
+</body>
+</html>

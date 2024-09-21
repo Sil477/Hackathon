@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Asistente Virtual</title>
+</head>
+<body>
+    <header>
+        <h1>Asistente Virtual</h1>
+    </header>
+
+    <main>
+        <div id="question"></div>
+        <input type="text" id="answer" placeholder="Tu respuesta" />
+        <div class="button" id="next-button" onclick="nextQuestion()">Siguiente</div>
+        <div class="button" id="accept-button" onclick="generateCV()" style="display: none;">Aceptar</div>
+    </main>
+
+    <div id="cv-output" class="cv-output" style="display: none;">
+        <h2>Tu CV Generado</h2>
+        <!-- Aquí se muestra la imagen fija -->
+        <img id="cv-image" src="./cv.webp" style="max-width: 150px; display: block;" alt="Foto de perfil" />
+        <pre id="cv-content"></pre>
+        <div id="confirmation-message" style="display: none;">
+            <p>¿Estás conforme con tu CV?</p>
+            <div class="button" onclick="window.location.href='modificar_cv.html'">Modificar</div>
+            <div class="button" onclick="closeCVOutput()">Aceptar</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Plataforma de Empleo Inclusiva</p>
+    </footer>
+
+    <script>
+        const questions = [
+            "¿Cuál es tu nombre completo?",
+            "¿Cuál es tu experiencia laboral más reciente?",
+            "¿Cuáles son tus habilidades principales?",
+            "¿Qué tipo de trabajo estás buscando?",
+            "¿Tienes alguna formación académica relevante?"
+        ];
+        let currentQuestion = 0;
+        const answers = [];
+
+        document.getElementById('question').innerText = questions[currentQuestion];
+
+        function nextQuestion() {
+            const answer = document.getElementById('answer').value;
+            answers.push(answer);
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                document.getElementById('question').innerText = questions[currentQuestion];
+                document.getElementById('answer').value = '';
+            } else {
+                document.getElementById('next-button').style.display = 'none';
+                document.getElementById('accept-button').style.display = 'block';
+            }
+        }
+
+        function generateCV() {
+            // Obtener el contenido del CV
+            const cvContent = `
+                Nombre: ${answers[0]}
+                Experiencia Laboral: ${answers[1]}
+                Habilidades: ${answers[2]}
+                Tipo de Trabajo Buscado: ${answers[3]}
+                Formación Académica: ${answers[4]}
+            `;
+            document.getElementById('cv-content').innerText = cvContent;
+
+            // Mostrar el CV generado
+            document.getElementById('cv-output').style.display = 'block';
+            document.getElementById('confirmation-message').style.display = 'block';
+        }
+
+        function closeCVOutput() {
+            document.getElementById('cv-output').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

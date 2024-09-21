@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimiza o Genera tu CV con IA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .btn-container {
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #upload-section, #optimized-cv-section, #generate-cv-section {
+            margin-top: 30px;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .summary {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .cv-image {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .action-btn {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .action-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Optimiza o Genera tu CV con IA</h1>
+
+    <!-- Botones principales -->
+    <div class="btn-container">
+        <button class="btn" onclick="showSection('optimize')">Optimiza tu CV con IA</button>
+        <button class="btn" onclick="redirectToAsistente()">Genera CV con IA</button>
+    </div>
+
+    <!-- Sección de carga de archivo para optimización -->
+    <div id="upload-section" class="hidden">
+        <h2>Sube tu CV</h2>
+        <p>Puedes cargar un archivo PDF o DOCX</p>
+        <input type="file" id="cvFile" accept=".pdf, .docx">
+        <br>
+        <button class="action-btn" onclick="optimizeCV()">Optimizar</button>
+    </div>
+
+    <!-- Sección de CV optimizado -->
+    <div id="optimized-cv-section" class="hidden">
+        <h2>CV Optimizado</h2>
+        <div class="summary">
+            <h3>Resumen del CV Propuesto</h3>
+            <p id="cvSummary">Aquí se mostrará el resumen generado por la IA...</p>
+        </div>
+        <img id="cvImage" class="cv-image" src="./cv.webp" alt="CV Optimizado">
+        <br>
+        <button class="action-btn" onclick="printCV()">Imprimir</button>
+        <button class="action-btn" onclick="saveCV()">Guardar</button>
+    </div>
+
+    <!-- Sección de generación de CV -->
+    <div id="generate-cv-section" class="hidden">
+        <h2>Genera tu CV con IA</h2>
+        <p>La funcionalidad para generar un CV desde cero estará disponible pronto.</p>
+    </div>
+
+    <script>
+        function showSection(section) {
+            // Ocultar todas las secciones
+            document.getElementById('upload-section').classList.add('hidden');
+            document.getElementById('optimized-cv-section').classList.add('hidden');
+            document.getElementById('generate-cv-section').classList.add('hidden');
+
+            // Mostrar la sección seleccionada
+            if (section === 'optimize') {
+                document.getElementById('upload-section').classList.remove('hidden');
+            } else if (section === 'generate') {
+                document.getElementById('generate-cv-section').classList.remove('hidden');
+            }
+        }
+
+        function optimizeCV() {
+            const fileInput = document.getElementById('cvFile');
+            const file = fileInput.files[0];
+
+            if (file) {
+                // Simulación de optimización del CV con IA
+                alert('Leyendo y optimizando tu CV...');
+
+                // Mostrar resumen y CV optimizado
+                document.getElementById('cvSummary').textContent = 'Este es un resumen simulado del CV optimizado generado por la IA. Se mejoraron las secciones de experiencia y habilidades.';
+                document.getElementById('optimized-cv-section').classList.remove('hidden');
+            } else {
+                alert('Por favor, carga un archivo antes de optimizar.');
+            }
+        }
+        function redirectToAsistente() {
+            window.location.href = 'asistente_virtual.html'; // Cambia el nombre si tu archivo tiene otro nombre
+        }
+        function printCV() {
+            alert('Imprimiendo tu CV optimizado...');
+            // Lógica para imprimir el CV
+        }
+
+        function saveCV() {
+            alert('Guardando tu CV optimizado...');
+            // Lógica para guardar el CV
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear CV</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        let cvContent = ""; // Variable para almacenar el CV generado
+
+        function startAssistant() {
+            // Iniciar el proceso de creación del CV
+            const name = prompt("¿Cuál es tu nombre?");
+            const experience = prompt("¿Cuánta experiencia laboral tienes?");
+            const skills = prompt("¿Cuáles son tus habilidades?");
+
+            // Generar el CV
+            cvContent = `Nombre: ${name}\nExperiencia: ${experience}\nHabilidades: ${skills}`;
+            document.getElementById("cvDisplay").innerText = cvContent;
+
+            // Mostrar opciones
+            document.getElementById("options").style.display = "block";
+            document.getElementById("modificationQuestions").style.display = "none"; // Ocultar preguntas de modificación
+        }
+
+        function modifyCV() {
+            // Preguntar al usuario qué desea modificar
+            const fieldToModify = prompt("¿Qué parte del CV deseas modificar? (Nombre, Experiencia, Habilidades)");
+            
+            // Modificar el campo seleccionado
+            switch(fieldToModify.toLowerCase()) {
+                case 'nombre':
+                    const newName = prompt("Escribe el nuevo nombre:");
+                    cvContent = cvContent.replace(/Nombre: .*/, `Nombre: ${newName}`);
+                    break;
+                case 'experiencia':
+                    const newExperience = prompt("Escribe la nueva experiencia:");
+                    cvContent = cvContent.replace(/Experiencia: .*/, `Experiencia: ${newExperience}`);
+                    break;
+                case 'habilidades':
+                    const newSkills = prompt("Escribe las nuevas habilidades:");
+                    cvContent = cvContent.replace(/Habilidades: .*/, `Habilidades: ${newSkills}`);
+                    break;
+                default:
+                    alert("Campo no válido. Por favor, selecciona entre Nombre, Experiencia o Habilidades.");
+                    return;
+            }
+
+            // Actualizar el CV con los cambios
+            document.getElementById("cvDisplay").innerText = cvContent;
+
+            // Mostrar opciones de nuevo
+            document.getElementById("options").style.display = "block";
+        }
+
+        function saveCV() {
+            alert("CV guardado exitosamente.");
+            // Aquí puedes agregar lógica para guardar el CV
+        }
+    </script>
+</head>
+<body>
+    <h1>Asistente para Crear CV</h1>
+    <button onclick="startAssistant()">Crear con Asistente Virtual</button>
+    
+    <div id="cvDisplay" style="margin-top: 20px;"></div>
+    
+    <div id="options" style="display: none;">
+        <div class="button" onclick="modifyCV()">Modificar</div>
+        <div class="button" onclick="saveCV()">Aceptar</div>
+    </div>
+</body>
+</html>

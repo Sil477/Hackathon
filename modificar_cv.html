@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar CV</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        let cv = {name: "Juan Pérez", experience: "Desarrollador Web", skills: "HTML, CSS, JavaScript"};
+
+        function loadCV() {
+            document.getElementById("cvPreview").innerText = `Nombre: ${cv.name}\nExperiencia: ${cv.experience}\nHabilidades: ${cv.skills}`;
+        }
+
+        function modifyField() {
+            let fieldToModify = document.getElementById("modifyInput").value;
+            if (fieldToModify) {
+                cv.skills = fieldToModify;
+                document.getElementById("cvPreview").innerText = `Nombre: ${cv.name}\nExperiencia: ${cv.experience}\nHabilidades: ${cv.skills}`;
+            }
+        }
+
+        function generateCV() {
+            // Generar el contenido del CV
+            const cvContent = `
+                Nombre: ${cv.name}
+                Experiencia Laboral: ${cv.experience}
+                Habilidades: ${cv.skills}
+            `;
+            document.getElementById('cvPreviewGenerated').innerText = cvContent;
+
+            // Mostrar la imagen del CV
+            document.getElementById("cvImage").src = "./cv.webp"; // Cambia esto por la ruta de tu imagen
+            document.getElementById("cvImage").style.display = "block"; // Muestra la imagen del CV
+            
+            // Muestra los datos del CV generados
+            document.getElementById("cvOutput").style.display = "block"; // Muestra el título del CV generado
+            document.getElementById("cvPreviewGenerated").style.display = "block"; // Muestra el contenido del CV
+        }
+
+        function saveModifications() {
+            alert("CV modificado guardado.");
+            // Mueve el llamado a generateCV aquí si quieres generar el CV al guardar
+            generateCV();
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+        }
+
+        .left, .right {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .left {
+            background-color: #fff;
+            border-right: 1px solid #ccc;
+        }
+
+        .right {
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .textarea-white {
+            width: 100%;
+            height: 100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #fff; /* Caja de texto blanca */
+        }
+
+        .icons-container {
+            margin-top: 10px;
+        }
+
+        .icon {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+        }
+
+        .button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body onload="loadCV()">
+    <div class="left">
+        <h1>Modificar CV</h1>
+
+        <h2>Vista Previa del CV</h2>
+        <pre id="cvPreview"></pre>
+
+        <h3>¿Qué deseas modificar?</h3>
+        
+        <div class="input-container">
+            <textarea class="textarea-white" id="modifyInput" placeholder="Escribe lo que quieres modificar"></textarea>
+            <div class="icons-container">
+                <img src="./disca.png" alt="Icono de discapacidad" class="icon">
+                <img src="./1231027.png" alt="Icono de voz" class="icon">
+            </div>
+        </div>
+
+        <button class="button" onclick="saveModifications()">Aceptar Modificaciones</button>
+    </div>
+
+    <div class="right">
+        <h2 id="cvOutput" style="display:none;">CV Generado</h2>
+        <pre id="cvPreviewGenerated" style="display:none;"></pre>
+        <img id="cvImage" src="./cv.webp" alt="Imagen del CV" style="display: none; width: 300px; margin-top: 20px;">
+    </div>
+</body>
+</html>
+
+
