@@ -3,80 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Plataforma de Empleo</title>
+    <title>Pantalla Completa</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('./home.png'); /* Cambia esto por la ruta de tu imagen */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hidden-button {
+            position: absolute;
+            bottom: 20px; /* Puedes ajustar la posición vertical */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: transparent; /* Fondo transparente */
+            border: none; /* Sin borde */
+            color: rgba(255, 255, 255, 0.5); /* Texto blanco poco visible */
+            font-size: 16px; /* Ajusta el tamaño del texto */
+            cursor: pointer;
+            text-decoration: underline; /* Texto subrayado */
+        }
+
+        .hidden-button:hover {
+            color: rgba(255, 255, 255, 0.8); /* Cambio de color al pasar el mouse */
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Plataforma de Empleo Inclusiva</h1>
-    </header>
-
-    <main>
-        <div class="button" id="inicio"onclick="redirectTohome()">Inicio</div>
-        <div class="button" id="registro"onclick="redirectToregistrou()">Registro/Iniciar Sesión</div>
-        <div class="button" id="buscar" onclick="redirectTobuscart()">Buscar</div>
-        <div class="button" id="crear-cv" onclick="openCVModal()">Crear/Actualizar CV</div>
-        <div class="button" id="Empeladores"onclick="redirectTobuscare()">Empleadores</div>
-    </main>
-
-    <div id="cv-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeCVModal()">&times;</span>
-            <h2>Selecciona cómo quieres crear tu CV</h2>
-            <div class="button" id="cv-tradicional"onclick="redirectTocvtradicional()">Crear CV Tradicional</div>
-            <div class="button" id="cv-asistente" onclick="redirectToAsistente()">Crear CV con Asistente Virtual</div>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2024 Plataforma de Empleo Inclusiva</p>
-    </footer>
-
-    <script>
-        function openCVModal() {
-            document.getElementById('cv-modal').style.display = 'block';
-        }
-
-        function closeCVModal() {
-            document.getElementById('cv-modal').style.display = 'none';
-        }
-
-        // Cerrar modal si se hace clic fuera de él
-        window.onclick = function(event) {
-            const modal = document.getElementById('cv-modal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
-
-        // Redirigir al asistente virtual
-        function redirectToAsistente() {
-            window.location.href = 'asistente_virtual.html'; // Cambia el nombre si tu archivo tiene otro nombre
-        }
-        // Redirigir al busqueda laboral
-        function redirectTobusquedaia() {
-            window.location.href = 'busquedaia.html'; // Cambia el nombre si tu archivo tiene otro nombre
-        }
-         // Redirigir al cv tradicional
-         function redirectTocvtradicional() {
-            window.location.href = 'cv_tradicional.html'; // Cambia el nombre si tu archivo tiene otro nombre
-        }
-        // Redirigir registro de usuario
-        function redirectToregistrou() {
-            window.location.href = 'registrol.html'; // Cambia el nombre si tu archivo tiene otro nombre
-        }
-        // Redirigir home
-        function redirectTohome() {
-            window.location.href = 'home.html'; // Cambia el nombre si tu archivo tiene otro nombre
-        }
-         // Redirigir empleadores
-         function redirectTobuscare() {
-            window.location.href = 'buscare.html'; // Cambia el nombre si tu archivo tiene otro nombre
-        }
-        // Redirigir Buscar todos 
-        function redirectTobuscart() {
-            window.location.href = 'buscart.html'; // Cambia el nombre si tu archivo tiene otro nombre
-        }
-    </script>
+    <button class="hidden-button" onclick="location.href='menup.html'">Acceso</button>
 </body>
 </html>
